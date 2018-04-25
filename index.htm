@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Angular JS | Login Page</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="scripts.js"></script>
+
+	<style>
+	span.done-true {
+		color: gray;
+		text-decoration: line-through;
+	}
+
+	span[contenteditable="true"] {
+		background: gray;
+		padding:3px;
+	}
+
+	</style>
+
+</head>
+
+	<body ng-app="mainApp" ng-controller="app">
+
+		<h1>Add a Task</h1>
+		
+		<input type="text" ng-model="task" ng-keydown="searchEnter()">
+
+		<div id="taskList">
+			<ul>
+				<li ng-repeat="oneTask in array track by $index"> <!-- oneTask is a temp variable. in points to the array that we use -->
+					<input type="checkbox" ng-model="oneTask.status">
+
+						<span contenteditable="false" ng-keyup="updateEnter(oneTask.taskMessage)" ng-dblclick="contentEdit(oneTask.taskMessage)" ng-model="oneTask.taskMessage" class= "done-{{oneTask.status}}"> 
+							<!--done is appeneded into the script when the checkbox is ticked as true is returned-->
+
+							{{oneTask.taskMessage}}</span>
+
+							<!-- pending the tasks with the task message instead of the whole object (see console for details) with the span tag -->
+				</li>
+
+			</ul>
+
+		</div>
+		
+
+	</body>
+
+</html>
